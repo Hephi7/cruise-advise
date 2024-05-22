@@ -98,15 +98,18 @@
     </footer>
     <script>
         function showHome() {
-            document.getElementById('home').classList.add('hidden');
-            document.getElementById('contact-content').classList.remove('hidden');
+            document.getElementById('home-content').classList.remove('hidden');
+            document.getElementById('diensten-content').classList.add('hidden');
+            document.getElementById('contact-content').classList.add('hidden');
         }
         function showDiensten() {
-            document.getElementById('home').classList.add('hidden');
-            document.getElementById('contact-content').classList.remove('hidden');
+            document.getElementById('home-content').classList.add('hidden');
+            document.getElementById('diensten-content').classList.remove('hidden');
+            document.getElementById('contact-content').classList.add('hidden');
         }
-                function showContact() {
-            document.getElementById('home').classList.add('hidden');
+        function showContact() {
+            document.getElementById('home-content').classList.add('hidden');
+            document.getElementById('diensten-content').classList.add('hidden');
             document.getElementById('contact-content').classList.remove('hidden');
         }
     </script>

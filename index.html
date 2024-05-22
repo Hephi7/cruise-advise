@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Persoonlijk cruise advies voor jouw eerste cruise. Plan een consultatie voor slechts 10 euro.">
     <title>Cruise Advies</title>
     <style>
         body {
@@ -19,7 +20,7 @@
         header {
             background: #333;
             color: #fff;
-            padding-top: 30px;
+            padding-top: 2rem;
             min-height: 70px;
             border-bottom: #77aaff 3px solid;
         }
@@ -27,7 +28,7 @@
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 16px;
+            font-size: 1rem;
         }
         header ul {
             padding: 0;
@@ -35,10 +36,16 @@
         }
         header ul li {
             display: inline;
-            padding: 0 20px 0 20px;
+            padding: 0 1.25rem;
+        }
+        header ul li a:hover {
+            text-decoration: underline;
+        }
+        nav {
+            float: right;
         }
         .content {
-            padding: 30px;
+            padding: 2rem;
             background: #fff;
         }
         .content h1 {
@@ -47,12 +54,15 @@
         .content p {
             line-height: 1.6;
         }
+        .hidden {
+            display: none;
+        }
         footer {
             background: #333;
             color: #fff;
             text-align: center;
-            padding: 10px;
-            margin-top: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
         }
     </style>
 </head>
@@ -60,22 +70,34 @@
     <header>
         <div class="container">
             <h1>Cruise Advies</h1>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#diensten">Diensten</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#diensten">Diensten</a></li>
+                    <li><a href="#contact" onclick="showContact()">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     <div class="container">
-        <div class="content">
+        <div class="content" id="home">
             <h1>Welkom bij Cruise Advies</h1>
             <p>Ik help je graag bij het vinden van jouw eerste cruise. Voor slechts 10 euro krijg je persoonlijk advies en aanbevelingen.</p>
             <p>Neem contact met mij op via <a href="mailto:info@cruiseadvies.be">info@cruiseadvies.be</a> om een consultatie in te plannen.</p>
+        </div>
+        <div class="content hidden" id="contact-content">
+            <h1>Contacteer ons</h1>
+            <p>Voor vragen of om een consultatie te plannen, stuur ons een e-mail op <a href="mailto:info@cruiseadvies.be">info@cruiseadvies.be</a>.</p>
         </div>
     </div>
     <footer>
         <p>Cruise Advies &copy; 2024</p>
     </footer>
+    <script>
+        function showContact() {
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('contact-content').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>

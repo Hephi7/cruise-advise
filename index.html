@@ -72,9 +72,9 @@
             <h1>Cruise Advies</h1>
             <nav>
                 <ul>
-                    <li><a href="#home" onclick="showHome()">Home</a></li>
-                    <li><a href="#diensten" onclick="showDiensten()">Diensten</a></li>
-                    <li><a href="#contact" onclick="showContact()">Contact</a></li>
+                    <li><a href="#home" onclick="showSection('home-content')">Home</a></li>
+                    <li><a href="#diensten" onclick="showSection('diensten-content')">Diensten</a></li>
+                    <li><a href="#contact" onclick="showSection('contact-content')">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -97,20 +97,10 @@
         <p>Cruise Advies &copy; 2024</p>
     </footer>
     <script>
-        function showHome() {
-            document.getElementById('home-content').classList.remove('hidden');
-            document.getElementById('diensten-content').classList.add('hidden');
-            document.getElementById('contact-content').classList.add('hidden');
-        }
-        function showDiensten() {
-            document.getElementById('home-content').classList.add('hidden');
-            document.getElementById('diensten-content').classList.remove('hidden');
-            document.getElementById('contact-content').classList.add('hidden');
-        }
-        function showContact() {
-            document.getElementById('home-content').classList.add('hidden');
-            document.getElementById('diensten-content').classList.add('hidden');
-            document.getElementById('contact-content').classList.remove('hidden');
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
         }
     </script>
 </body>

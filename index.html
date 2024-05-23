@@ -88,6 +88,36 @@
             padding: 1rem;
             margin-top: 1rem;
         }
+        
+        /* Media Queries voor Responsieve Lay-out */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            header {
+                text-align: center;
+            }
+            nav {
+                float: none;
+                margin: 0;
+            }
+            header ul {
+                text-align: center;
+            }
+            header ul li {
+                display: block;
+                padding: 0.5rem 0;
+            }
+            .news-item {
+                width: calc(50% - 1rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-item {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -116,57 +146,4 @@
             <p>Ik help je bij het uitkiezen van rederij, schip, route en periode aan de hand van enkele gerichte vragen. Ik kijk mee met jouw naar het huidige aanbod en stel interessante opties voor. Ik ben geen reisagent dus het boeken doe je zelf ofwel rechtstreeks bij de rederij ofwel bij een erkend reisagent.</p>
         </div>       
         <div class="content hidden" id="contact-content">
-            <h1>Contacteer ons</h1>
-            <p>Voor vragen of om een consultatie te plannen, stuur ons een e-mail op <a href="mailto:info@cruiseadvies.be">info@cruiseadvies.be</a>. (nog niet beschikbaar)</p>
-        </div>
-		<div class="content hidden" id="oops-content">
-            <h1>Oops!</h1>
-            <p>Deze site werd gemaakt door een amateur (mezelf) en kan dus af en toe eens vastlopen. :)</p>
-        </div>
-    </div>
-    <footer>
-        <p>Cruise Advies &copy; 2024</p>
-    </footer>
-    <script>
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.content');
-            sections.forEach(section => section.classList.add('hidden'));
-            document.getElementById(sectionId).classList.remove('hidden');
-        }
-
-        // Nieuwsberichten laden vanuit news.json
-        async function loadNews() {
-            try {
-                const response = await fetch('news.json');
-                const newsItems = await response.json();
-                const newsSection = document.getElementById('news-section');
-
-                newsItems.forEach(item => {
-                    const article = document.createElement('article');
-                    article.classList.add('news-item');
-
-                    const img = document.createElement('img');
-                    img.src = item.image;
-                    img.alt = `Nieuws Foto ${item.title}`;
-
-                    const title = document.createElement('h2');
-                    title.textContent = item.title;
-
-                    const text = document.createElement('p');
-                    text.textContent = item.text;
-
-                    article.appendChild(img);
-                    article.appendChild(title);
-                    article.appendChild(text);
-                    newsSection.appendChild(article);
-                });
-            } catch (error) {
-                console.error('Fout bij het laden van nieuwsberichten:', error);
-				showSection('oops-content')
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', loadNews);
-    </script>
-</body>
-</html>
+            <h1>Contacteer

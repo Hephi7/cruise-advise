@@ -91,30 +91,215 @@
         }
         
         /* Media Queries voor Responsieve Lay-out */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-            header {
-                text-align: center;
-            }
-            nav {
-                float: none;
-                margin: 0;
-            }
-            header ul li {
-                padding: 0.5rem 0;
-            }
-            .news-item {
-                width: calc(50% - 1rem);
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Persoonlijk cruise advies voor jouw eerste cruise. Plan een consultatie voor slechts 10 euro.">
+    <title>Cruise Advies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 2rem;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+        header ul li {
+            display: inline-block;
+            padding: 0 1.25rem;
+        }
+        header ul li a:hover {
+            text-decoration: underline;
+        }
+        nav {
+            float: right;
+        }
+        .content {
+            padding: 2rem;
+            background: #fff;
+        }
+        .content h1 {
+            color: #333;
+        }
+        .content p {
+            line-height: 1.6;
+        }
+        .hidden {
+            display: none;
+        }
+        .news-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .news-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            width: calc(33.333% - 1rem);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .news-item img {
+            width: 100%;
+            height: auto;
+        }
+        .news-item h2 {
+            font-size: 1.25rem;
+            margin: 0.5rem;
+        }
+        .news-item p {
+            padding: 0 0.5rem 1rem 0.5rem;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        /* Media Queries voor Responsieve Lay-out */
+	@media (max-width: 768px) {
+		.container {
+			width: 95%;
+		}
+		header {
+			text-align: center;
+		}
+		nav {
+			float: none;
+			margin: 0;
+		}
+		header ul {
+			display: flex;
+			justify-content: space-around;
+			padding: 0;
+		}
+		header ul li {
+			padding: 0.5rem 0;
+			display: inline-block;
+		}
+		.news-item {
+			width: calc(50% - 1rem);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.news-item {
+			width: 100%;
+		}
+	}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Cruise Advies</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home" onclick="showSection('home-content')">Home</a></li>
+                    <li><a href="#diensten" onclick="showSection('diensten-content')">Diensten</a></li>
+                    <li><a href="#contact" onclick="showSection('contact-content')">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="content" id="home-content">
+            <h1>Welkom bij Cruise Advies .BE</h1>
+            <p>Ik help je graag bij het vinden van jouw eerste cruise. Deze site is nog in ontwikkeling.</p>
+            <section class="news-section" id="news-section">
+                <!-- Nieuwsberichten zullen hier dynamisch worden geladen -->
+            </section>
+        </div>
+        <div class="content hidden" id="diensten-content">
+            <h1>Diensten</h1>
+            <p>Ik help je bij het uitkiezen van rederij, schip, route en periode aan de hand van enkele gerichte vragen. Ik kijk mee met jouw naar het huidige aanbod en stel interessante opties voor. Ik ben geen reisagent dus het boeken doe je zelf ofwel rechtstreeks bij de rederij ofwel bij een erkend reisagent.</p>
+        </div>       
+        <div class="content hidden" id="contact-content">
+            <h1>Contacteer ons</h1>
+            <p>Voor vragen of om een consultatie te plannen, stuur ons een e-mail op <a href="mailto:info@cruiseadvies.be">info@cruiseadvies.be</a>. (nog niet beschikbaar)</p>
+        </div>
+		<div class="content hidden" id="oops-content">
+            <h1>Oops!</h1>
+            <p>De site liep ergens vast. Mijn excuses voor het ongemak.</p>
+        </div>
+    </div>
+    <footer>
+        <p>Cruise Advies &copy; 2024</p>
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        // Nieuwsberichten laden vanuit news.json
+        async function loadNews() {
+            try {
+                const response = await fetch('news.json');
+                if (!response.ok) {
+                    throw new Error('Netwerkrespons was niet ok');
+                }
+                const newsItems = await response.json();
+                const newsSection = document.getElementById('news-section');
+
+                newsItems.forEach(item => {
+                    const article = document.createElement('article');
+                    article.classList.add('news-item');
+
+                    const img = document.createElement('img');
+                    img.src = item.image;
+                    img.alt = `Nieuws Foto ${item.title}`;
+
+                    const title = document.createElement('h2');
+                    title.textContent = item.title;
+
+                    const text = document.createElement('p');
+                    text.textContent = item.text;
+
+                    article.appendChild(img);
+                    article.appendChild(title);
+                    article.appendChild(text);
+                    newsSection.appendChild(article);
+                });
+            } catch (error) {
+                console.error('Fout bij het laden van nieuwsberichten:', error);
+				showSection('oops-content');
             }
         }
 
-        @media (max-width: 480px) {
-            .news-item {
-                width: 100%;
-            }
-        }
+        document.addEventListener('DOMContentLoaded', loadNews);
+    </script>
+</body>
+</html>
+
     </style>
 </head>
 <body>

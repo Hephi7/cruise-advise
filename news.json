@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Nieuws Titel 1",
+        "text": "Dit is de tekst voor het eerste nieuwsbericht. Het bevat belangrijke informatie en updates.",
+        "image": "path/to/photo1.jpg"
+    },
+    {
+        "title": "Nieuws Titel 2",
+        "text": "Dit is de tekst voor het tweede nieuwsbericht. Hier worden nog meer details gedeeld.",
+        "image": "path/to/photo2.jpg"
+    },
+    {
+        "title": "Nieuws Titel 3",
+        "text": "Dit is de tekst voor het derde nieuwsbericht. Meer informatie volgt binnenkort.",
+        "image": "path/to/photo3.jpg"
+    }
+]
